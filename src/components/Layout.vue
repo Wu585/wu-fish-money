@@ -8,6 +8,8 @@
 </template>
 
 <script lang="ts">
+import x from '@/assets/icons/money.svg'
+
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
 
