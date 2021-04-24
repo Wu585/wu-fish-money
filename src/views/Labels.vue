@@ -1,16 +1,14 @@
 <template>
-<div>
-  <p>Label</p>
-  <Nav/>
-</div>
+  <Layout>
+    Labels
+  </Layout>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import {Component} from 'vue-property-decorator';
-@Component({
 
-})
+@Component({})
 export default class Labels extends Vue {
 
 }
