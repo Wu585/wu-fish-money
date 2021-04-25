@@ -1,5 +1,5 @@
 <template>
-  <Layout class-prefix="layout">
+  <Layout classPrefix="layout">
     <NumberPad/>
     <Types/>
     <Notes/>

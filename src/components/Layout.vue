@@ -13,7 +13,7 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component
 export default class Layout extends Vue {
-  @Prop() classPrefix: string;
+  @Prop(String) classPrefix: string | undefined;
 }
 </script>
 

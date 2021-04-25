@@ -17,7 +17,7 @@ import {Component,Prop} from 'vue-property-decorator';
 
 @Component
 export default class Icon extends Vue {
-  @Prop() name: string;
+  @Prop() name: string | undefined;
 }
 </script>
 
