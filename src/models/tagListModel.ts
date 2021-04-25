@@ -1,0 +1,28 @@
+const localStorageKeyName = 'tagList';
+type TagListModel = {
+    data: string[]
+    fetch: () => string[]
+    create: (name: string) => 'success' | 'duplicated'  //success表示成功，duplicated表示标签名重复
+    save: () => void
+}
+
+const tagListModel: TagListModel = {
+    data: [],
+    fetch() {
+        this.data = JSON.parse(localStorage.getItem(localStorageKeyName) || '[]');
+        return this.data;
+    },
+    create(name) {
+        if (this.data.indexOf(name) >= 0) {
+            return 'duplicated'
+        }
+        this.data.push(name);
+        this.save();
+        return 'success';
+    },
+    save() {
+        localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
+    }
+};
+
+export default tagListModel;
