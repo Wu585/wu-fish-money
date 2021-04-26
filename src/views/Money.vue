@@ -7,7 +7,7 @@
                 placeholder="在这里请输入备注"
                 @update:value="onUpdateNotes"/>
     </div>
-    <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+    <Tags/>
   </Layout>
 </template>
 
@@ -18,7 +18,8 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import FormItem from '@/components/Money/FormItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import store from '@/store/index2';
+import oldStore from '@/store/index2';
+import store from '@/store';
 
 // const version = window.localStorage.getItem('version') || 0;
 // const recordList = window.recordList;
@@ -32,11 +33,11 @@ import store from '@/store/index2';
 //
 // window.localStorage.setItem('version', '0.0.2');
 @Component({
-  components: {Tags, FormItem, Types, NumberPad}
+  components: {Tags, FormItem, Types, NumberPad},
+  computed: {}
 })
 export default class Money extends Vue {
-  tags = store.tagList;
-  recordList = store.recordList;
+  recordList = oldStore.recordList;
   // eslint-disable-next-line no-undef
   record: RecordItem = {tags: [], notes: '', type: '-', amount: 0};
 
@@ -44,12 +45,8 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
 
-  onUpdateTags(value: string[]) {
-    this.record.tags = value;
-  }
-
   saveRecord() {
-    store.createRecord(this.record);
+    oldStore.createRecord(this.record);
   }
 
 }
